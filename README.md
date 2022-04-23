@@ -3,6 +3,8 @@
 # 10about?, powered by React, Redux Toolkit, Styled Components and React Roter
 10about? is a place where you can test your knowledge by aswering a quiz with 10 question about something. I created 10about? to train my skills with React and Redux. The project didn't justify the use of Redux, but I used it for training.
 
+[Access now](https://10about.vercel.app/)
+
 ## Project
 
 ### Main technologies used
