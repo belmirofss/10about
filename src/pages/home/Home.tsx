@@ -4,7 +4,6 @@ import { Main, Overline, Stage } from '../../App.styles';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { GhostButton, PrimaryLink } from '../../components/button/Button.styles';
 import Header from '../../components/header/Header';
-import { HeaderAnchor, DesktopOnly } from '../../components/header/Header.styles';
 import { ArrowRightIcon, ShuffleIcon } from '../../components/icons/Icons';
 import { loadCategories, selectCategories } from '../../features/categories/categoriesSlice';
 import { DEFAULT_DIFFICULTY } from '../../utils/difficulty';
@@ -35,14 +34,7 @@ export default function Home() {
 
     return (
         <>
-            <Header right={
-                <>
-                    <DesktopOnly>
-                        <HeaderAnchor href="#how-it-plays">How it plays</HeaderAnchor>
-                    </DesktopOnly>
-                    <PrimaryLink to="/new-quiz" style={{ height: 46, padding: '0 22px', fontSize: 16 }}>Play now</PrimaryLink>
-                </>
-            } />
+            <Header />
 
             <Main>
                 <Content>

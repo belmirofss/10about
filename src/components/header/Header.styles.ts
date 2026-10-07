@@ -100,14 +100,6 @@ const headerLink = css`
 `;
 
 export const HeaderLink = styled(Link)`${headerLink}`;
-export const HeaderAnchor = styled.a`${headerLink}`;
-
-/** Not rendered at all on phones. */
-export const DesktopOnly = styled.span`
-    ${onMobile} {
-        display: none;
-    }
-`;
 
 /** Label that is visually hidden on phones (still read by screen readers), leaving only the icon next to it. */
 export const LabelHiddenOnMobile = styled.span`
