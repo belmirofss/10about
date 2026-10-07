@@ -2,20 +2,40 @@ import { DefaultTheme } from "styled-components";
 
 export const theme: DefaultTheme = {
     colors: {
+        background: '#07112B',
+        surface: '#0E1D4A',
+        surfaceAlt: '#0B1840',
+        surfaceRaised: '#13265C',
+        border: '#22356E',
+        borderStrong: '#3A4E8C',
         primary: '#004AAD',
-        success: '#00690e',
-        error: '#bd0000'
+        accent: '#FFC23D',
+        accentSoft: '#FFE3A0',
+        onAccent: '#07112B',
+        text: '#F3F5FB',
+        textMuted: '#A9B4D6',
+        textFaint: '#7F8CB8',
+        success: '#3BE38F',
+        successText: '#8AF0BF',
+        error: '#FF7A66',
+        errorText: '#FFB3A8'
     },
-    spacing: {
-        xl: '80px',
-        lg: '68px',
-        md: '46px',
-        sm: '32px',
-        xs: '18px'
+    fonts: {
+        body: "'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif",
+        logo: "'Lobster', cursive"
+    },
+    radii: {
+        sm: '10px',
+        md: '14px',
+        lg: '24px',
+        xl: '32px',
+        pill: '999px'
     },
     breakpoints: {
-        lg: '1200px',
         md: '800px',
-        sm: '400px'
+        sm: '480px'
     }
-};  
+};
+
+/** Media query prefix for phone-sized layouts. */
+export const onMobile = `@media (max-width: ${theme.breakpoints.md})`;

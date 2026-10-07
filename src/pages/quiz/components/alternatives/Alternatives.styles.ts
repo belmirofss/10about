@@ -1,74 +1,78 @@
 import styled from "styled-components";
-import { lighten } from 'polished';
+import { onMobile } from "../../../../theme";
 
-interface AlternativeProps {
-    selected?: boolean;
-    correct?: boolean;
-    wrong?: boolean;
-}
+export type AlternativeState = 'idle' | 'correct' | 'wrong' | 'dimmed';
 
 export const Container = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    margin-top: 6px;
+
+    ${onMobile} {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+        margin-top: 0;
+    }
 `;
 
-export const Alternative = styled.button<AlternativeProps>`
-    padding: 4px;
+export const Alternative = styled.button<{ $state: AlternativeState }>`
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 84px;
+    padding: 14px 20px;
+    border-radius: ${({ theme }) => theme.radii.pill};
+    border: 2px solid ${({ theme, $state }) =>
+        $state === 'correct' ? theme.colors.success : $state === 'wrong' ? theme.colors.error : theme.colors.border};
+    background: ${({ theme, $state }) =>
+        $state === 'correct' ? theme.colors.success : $state === 'wrong' ? theme.colors.error : theme.colors.surface};
+    color: ${({ theme, $state }) =>
+        $state === 'correct' || $state === 'wrong' ? theme.colors.onAccent : theme.colors.text};
+    opacity: ${({ $state }) => $state === 'dimmed' ? 0.45 : 1};
+    font-size: 22px;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 120ms ease, border-color 120ms ease;
+
+    &:hover:not(:disabled) {
+        border-color: ${({ theme }) => theme.colors.accent};
+        transform: translateY(-2px);
+    }
+
+    &:disabled {
+        cursor: default;
+    }
+
+    ${onMobile} {
+        min-height: 66px;
+        padding: 10px 16px;
+        gap: 14px;
+        font-size: 19px;
+    }
+`;
+
+export const Key = styled.span`
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 2px solid currentColor;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: ${({ theme }) => theme.spacing.xs};
     font-size: 18px;
-    background: ${({ selected, correct, wrong, theme }) => {
-        if (selected && correct) {
-            return lighten(0.7, theme.colors.success);
-        }
+    font-weight: 800;
 
-        if (selected && wrong) {
-            return lighten(0.5, theme.colors.error);
-        }
-
-        return '#FFF';
-    }};
-    border: 4px solid ${({ correct, wrong, theme }) => {
-        if (correct) {
-            return theme.colors.success;
-        }
-
-        if (wrong) {
-            return theme.colors.error;
-        }
-
-        return theme.colors.primary
-    }};
-    color: ${({ correct, wrong, theme }) => {
-        if (correct) {
-            return theme.colors.success;
-        }
-
-        if (wrong) {
-            return theme.colors.error;
-        }
-
-        return theme.colors.primary
-    }};
-    outline: none;
-    width: 100%;    
-    min-height: 48px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-
-    transform: ${({ selected }) => selected ? 'scale(1.05)' : 'none'};
-
-    &:hover:not(:disabled) {
-        transform: scale(1.05);
-        transition: all 150ms;
-    } 
-
-    :disabled {
-        cursor: no-drop;
+    ${onMobile} {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
     }
+`;
+
+export const Text = styled.span`
+    flex: 1;
+    overflow-wrap: anywhere;
 `;

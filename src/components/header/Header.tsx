@@ -1,15 +1,20 @@
-import React from 'react';
-import { Content, Logo } from "./Header.styles";
-import logo from '../../images/10about.png'
-import { Link } from 'react-router-dom';
+import React, { ReactNode } from 'react';
+import { Center, Content, Logo, Slot } from './Header.styles';
 
-export default function Header() {
+interface Props {
+    center?: ReactNode;
+    right?: ReactNode;
+}
+
+export default function Header(props: Props) {
+
+    const { center, right } = props;
 
     return (
         <Content>
-            <Link to="/">
-                <Logo src={logo} alt="10about logo" />
-            </Link>
+            <Logo to="/" aria-label="10about? home">10about?</Logo>
+            <Center>{center}</Center>
+            <Slot>{right}</Slot>
         </Content>
     );
 }
