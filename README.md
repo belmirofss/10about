@@ -7,6 +7,14 @@
 
 ## Project
 
+### How it plays
+
+- **Pick a board**: choose one of the Open Trivia DB categories and a difficulty on a single screen (or hit *Surprise me* for a random board).
+- **Answer ten**: the right answer is revealed as soon as you choose; a side "ladder" (a progress bar on phones) tracks every answer. On desktop you can play with the keyboard: <kbd>A</kbd>–<kbd>D</kbd> (or <kbd>1</kbd>–<kbd>4</kbd>) to answer, <kbd>Enter</kbd> for the next question.
+- **Take a bow**: see your score, review the questions you missed, replay the same board or share your result.
+
+The visual design is the "Showtime" concept: a dark game-show stage with spotlight amber accents, built responsive from phone to desktop.
+
 ### Main technologies used
 
 - [React](https://reactjs.org/)
